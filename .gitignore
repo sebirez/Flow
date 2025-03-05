@@ -1,3 +1,5 @@
 flowvenv/
 next.txt
 myflow.py
+venv/
+test/

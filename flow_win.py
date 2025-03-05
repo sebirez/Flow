@@ -1,16 +1,16 @@
-import pyexcel, statistics, os, shutil, numpy
+import pyexcel, statistics, os, shutil #numpy
 from datetime import datetime, timedelta
 
 
-def convert_to_wsl_path(win_path):                                                          #function to convert Windows file path to WSL filepath                                                                                               
-    win_path = win_path.strip('"')
-    return os.popen(f"wslpath '{win_path}'").read().strip()
+# def convert_to_wsl_path(win_path):                                                          #function to convert Windows file path to WSL filepath                                                                                               
+#     win_path = win_path.strip('"')
+#     return os.popen(f"wslpath '{win_path}'").read().strip()
 
-source_win_data = input("Enter the source data filepath: ")                                 #convert source 
-destination_win_folder = input("Enter the destination folder path: ")
+# source_win_data = input("Enter the source data filepath: ")                                 #convert source 
+# destination_win_folder = input("Enter the destination folder path: ")
 
-source_data = convert_to_wsl_path(source_win_data) 
-destination_folder = convert_to_wsl_path(destination_win_folder)
+source_data = input("Enter the source data filepath: ")
+destination_folder = input("Enter the destination folder path: ")
 
 # source_data = "tests/FLG.csv"
 # destination_folder = "/home/sebirez/workspace/github.com/sebirez/Flow/tests"
@@ -61,7 +61,7 @@ for date in dates:                                                              
     #print(FL_list)
     FL_max = max(FL_list)
     FL_median = statistics.median(FL_list)
-    flow_95 = numpy.percentile(FL_list, 95)
+    #flow_95 = numpy.percentile(FL_list, 95)
     date.append(flow_95)
     date.append(FL_average)
     date.append(FL_max)
@@ -77,7 +77,7 @@ for date in dates:
     date_adj = (datetime.strptime(date[0], "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
     date[0] = date_adj
 
-column_headings = ["Date", "95% Flow Limit.", "Average", "Max", "Median", "Total #", "# > 0.05", "# > 0.10", "# > 0.20", "# > 0.30"]
+column_headings = ["Date", "Average", "Max", "Median", "Total #", "# > 0.05", "# > 0.10", "# > 0.20", "# > 0.30"]
 
 
 flow_report = dates
