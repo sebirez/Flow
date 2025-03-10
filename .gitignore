@@ -1,5 +1,7 @@
 flowvenv/
 next.txt
-myflow.py
 venv/
-test/
+tests/
+input/
+output/
+readme.txt
